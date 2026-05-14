@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Effetti dell'Urbanizzazione — Abu Dhabi Urban Story</title>
+  <link rel="icon" type="image/webp" href="../images/icona.webp">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .effects-hero-section {
+      background: var(--deep);
+      padding: 6rem 4rem;
+    }
+    .effects-hero-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .effects-hero-inner .section-title { color: var(--white); font-size: clamp(2.5rem,5vw,4rem); }
+    .effects-hero-inner .section-text {
+      color: rgba(250,248,244,0.55);
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* POSITIVE NEGATIVE FULL */
+    .effects-full {
+      background: var(--white);
+      padding: 7rem 4rem;
+    }
+    .effects-full-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .effects-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 5rem;
+    }
+    .col-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--sand-light);
+    }
+    .col-icon-big { font-size: 2.5rem; }
+    .col-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 400;
+    }
+    .positive .col-title { color: var(--teal); }
+    .negative .col-title { color: #7A4040; }
+    .col-subtitle {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
+
+    .effect-card-big {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      padding: 1.8rem;
+      margin-bottom: 1rem;
+      background: var(--sand-pale);
+      transition: all 0.4s;
+      border-left: 4px solid transparent;
+      cursor: default;
+    }
+    .positive .effect-card-big { border-left-color: var(--teal-light); }
+    .negative .effect-card-big { border-left-color: #C47A7A; }
+    .effect-card-big:hover {
+      transform: translateX(8px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      background: var(--white);
+    }
+    .effect-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      min-width: 40px;
+      line-height: 1;
+    }
+    .positive .effect-num { color: var(--teal-light); }
+    .negative .effect-num { color: #C47A7A; }
+    .effect-body strong {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+    .effect-body p {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* SUSTAINABILITY SECTION */
+    .sustain-section {
+      background: linear-gradient(135deg, var(--teal) 0%, var(--ocean) 100%);
+      padding: 6rem 4rem;
+    }
+    .sustain-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .sustain-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-bottom: 4rem;
+    }
+    .sustain-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.2;
+    }
+    .sustain-header p {
+      font-size: 0.88rem;
+      color: rgba(250,248,244,0.65);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+    .sustain-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .sustain-card {
+      background: rgba(255,255,255,0.08);
+      padding: 2rem;
+      border: 1px solid rgba(255,255,255,0.12);
+      transition: all 0.4s;
+    }
+    .sustain-card:hover {
+      background: rgba(255,255,255,0.14);
+      transform: translateY(-4px);
+    }
+    .sustain-card-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .sustain-card h3 {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold-bright);
+      margin-bottom: 0.7rem;
+    }
+    .sustain-card p {
+      font-size: 0.8rem;
+      color: rgba(250,248,244,0.6);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    @media (max-width: 900px) {
+      .effects-columns { grid-template-columns: 1fr; }
+      .sustain-header { grid-template-columns: 1fr; }
+      .sustain-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">Abu<span>Dhabi</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="passato.html">Il Passato</a></li>
+      <li><a href="confronto.html">Confronto</a></li>
+      <li><a href="effetti.html">Effetti</a></li>
+      <li><a href="conclusione.html">Conclusione</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero" style="background: linear-gradient(135deg, #0A1628, #1A3A5C);">
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <p class="hero-eyebrow">Analisi degli impatti</p>
+      <h1 class="hero-title">Effetti dell'<em>Urbanizzazione</em></h1>
+    </div>
+  </div>
+
+  <!-- HERO TEXT -->
+  <section class="effects-hero-section">
+    <div class="effects-hero-inner">
+      <span class="section-eyebrow" style="color:var(--gold);">Una crescita a doppio filo</span>
+      <h2 class="section-title reveal">Ogni trasformazione ha<br><em>due facce</em></h2>
+      <p class="section-text reveal reveal-delay-1" style="margin-top:1rem;">
+        Lo sviluppo urbano straordinario di Abu Dhabi ha portato benessere, modernità e opportunità senza precedenti. Ma ha anche sollevato domande fondamentali sull'impatto ambientale, la sostenibilità e la preservazione dell'identità culturale e naturale della regione.
+      </p>
+    </div>
+  </section>
+
+  <!-- EFFECTS -->
+  <section class="effects-full">
+    <div class="effects-full-inner">
+      <div class="reveal" style="text-align:center;">
+        <span class="section-eyebrow">Impatti Documentati</span>
+        <h2 class="section-title">Positivi <em>&</em> Negativi</h2>
+      </div>
+
+      <div class="effects-columns">
+        <!-- POSITIVE -->
+        <div class="positive reveal">
+          <div class="col-header">
+            <span class="col-icon-big">✅</span>
+            <div>
+              <div class="col-title">Effetti Positivi</div>
+              <div class="col-subtitle">Crescita & Prosperità</div>
+            </div>
+          </div>
+
+          <div class="effect-card-big">
+            <div class="effect-num">01</div>
+            <div class="effect-body">
+              <strong>Crescita Economica Eccezionale</strong>
+              <p>Il PIL dell'emirato è passato da meno di 10 miliardi di dollari negli anni '90 a oltre 253 miliardi nel 2023. Abu Dhabi è oggi uno dei centri finanziari più importanti del Medio Oriente, con iniziative come ADGM (Abu Dhabi Global Market).</p>
+            </div>
+          </div>
+
+          <div class="effect-card-big">
+            <div class="effect-num">02</div>
+            <div class="effect-body">
+              <strong>Turismo & Cultura</strong>
+              <p>L'emirato ha investito massicciamente in turismo e cultura: il Louvre Abu Dhabi, il Guggenheim in costruzione su Saadiyat Island, le corse di Formula 1 su Yas Island. I visitatori internazionali superano i 24 milioni l'anno.</p>
+            </div>
+          </div>
+
+          <div class="effect-card-big">
+            <div class="effect-num">03</div>
+            <div class="effect-body">
+              <strong>Infrastrutture Moderne</strong>
+              <p>Reti stradali avanzate, l'aeroporto internazionale, ospedali di eccellenza, università di rango mondiale (NYU Abu Dhabi, Khalifa University). La qualità della vita è classificata tra le più alte al mondo.</p>
+            </div>
+          </div>
+
+          <div class="effect-card-big">
+            <div class="effect-num">04</div>
+            <div class="effect-body">
+              <strong>Occupazione e Migrazione</strong>
+              <p>Milioni di lavoratori da tutto il mondo hanno trovato opportunità professionali ad Abu Dhabi, contribuendo a un tessuto multiculturale unico. La città ospita persone di oltre 200 nazionalità.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- NEGATIVE -->
+        <div class="negative reveal reveal-delay-2">
+          <div class="col-header">
+            <span class="col-icon-big">⚠️</span>
+            <div>
+              <div class="col-title">Effetti Negativi</div>
+              <div class="col-subtitle">Sfide & Impatti</div>
+            </div>
+          </div>
+
+          <div class="effect-card-big">
+            <div class="effect-num">01</div>
+            <div class="effect-body">
+              <strong>Impatto Ambientale</strong>
+              <p>La costruzione di isole artificiali, il dragaggio dei fondali marini e l'espansione costiera hanno alterato gli ecosistemi marini del Golfo. Siti di mangrovie e habitat naturali sono stati ridotti significativamente.</p>
+            </div>
+          </div>
+
+          <div class="effect-card-big">
+            <div class="effect-num">02</div>
+            <div class="effect-body">
+              <strong>Consumo Energetico</strong>
+              <p>Abu Dhabi ha uno dei consumi pro capite di energia più alti al mondo. Il mantenimento del clima artificiale negli edifici, la desalinizzazione dell'acqua e la mobilità urbana richiedono enormi quantità di energia.</p>
+            </div>
+          </div>
+
+          <div class="effect-card-big">
+            <div class="effect-num">03</div>
+            <div class="effect-body">
+              <strong>Riduzione Aree Naturali</strong>
+              <p>Decine di migliaia di ettari di ecosistema desertico, zone umide costiere e habitat naturali sono stati irrimediabilmente trasformati in zone urbane, industriali o infrastrutturali.</p>
+            </div>
+          </div>
+
+          <div class="effect-card-big">
+            <div class="effect-num">04</div>
+            <div class="effect-body">
+              <strong>Dipendenza dalla Manodopera Esterna</strong>
+              <p>La rapida crescita ha creato una forte dipendenza da lavoro migrante, con sfide legate alle condizioni lavorative, all'alloggio e all'integrazione sociale di milioni di lavoratori stranieri.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUSTAINABILITY -->
+  <section class="sustain-section">
+    <div class="sustain-inner">
+      <div class="sustain-header">
+        <h2 class="reveal">Abu Dhabi verso<br>la <em>sostenibilità</em></h2>
+        <p class="reveal reveal-delay-2">
+          Il Piano 2030 di Abu Dhabi — presentato sul sito ufficiale <a href="https://www.abudhabi.ae" target="_blank" style="color:var(--gold-bright);text-decoration:none;">abudhabi.ae</a> — include ambiziosi obiettivi di sostenibilità: 44% di energia rinnovabile entro il 2030, riduzione dell'impronta carbonica, protezione delle zone di mangrovie e sviluppo di quartieri green come Masdar City, la prima città a zero emissioni al mondo.
+        </p>
+      </div>
+      <div class="sustain-cards">
+        <div class="sustain-card reveal">
+          <div class="sustain-card-icon">☀️</div>
+          <h3>Energia Rinnovabile</h3>
+          <p>Il progetto ADNOC e la centrale solare Mohammed bin Rashid Al Maktoum puntano al 44% di energia pulita entro il 2030.</p>
+        </div>
+        <div class="sustain-card reveal reveal-delay-1">
+          <div class="sustain-card-icon">🌿</div>
+          <h3>Masdar City</h3>
+          <p>La prima città a zero emissioni di carbonio al mondo, situata ad Abu Dhabi, è un laboratorio vivente per le tecnologie sostenibili.</p>
+        </div>
+        <div class="sustain-card reveal reveal-delay-2">
+          <div class="sustain-card-icon">🐢</div>
+          <h3>Biodiversità Marina</h3>
+          <p>Programmi di protezione delle dugonghe, tartarughe marine e coralli nelle acque emiratine, gestiti da Environment Agency Abu Dhabi.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Abu<span>Dhabi</span> Urban Story</div>
+    <ul class="footer-nav">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="passato.html">Passato</a></li>
+      <li><a href="confronto.html">Confronto</a></li>
+      <li><a href="effetti.html">Effetti</a></li>
+      <li><a href="conclusione.html">Conclusione</a></li>
+    </ul>
+    <div class="footer-credits">
+      Fonte: <a href="https://www.abudhabi.ae" target="_blank" style="color:var(--gold);text-decoration:none;">abudhabi.ae</a><br>
+      © 2026 Abu Dhabi Urban Story
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

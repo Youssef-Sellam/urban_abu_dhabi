@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abu Dhabi nel Passato — Urban Story</title>
+  <link rel="icon" type="image/webp" href="../images/icona.webp">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .timeline-section {
+      background: var(--white);
+      padding: 8rem 4rem;
+    }
+    .timeline-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .timeline-header {
+      text-align: center;
+      margin-bottom: 6rem;
+    }
+    .hist-grid {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .hist-card {
+      background: var(--sand-pale);
+      padding: 3rem 2.5rem;
+      border-top: 3px solid var(--sand);
+      transition: all 0.4s;
+      cursor: default;
+    }
+    .hist-card:hover {
+      background: var(--white);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      border-top-color: var(--teal);
+    }
+    .hist-decade {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: var(--sand);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .hist-card:hover .hist-decade { color: var(--teal); }
+    .hist-card h3 {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .hist-card p {
+      font-size: 0.83rem;
+      color: var(--text-light);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+    .satellite-full {
+      background: var(--deep);
+      padding: 6rem 4rem;
+    }
+    .satellite-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .sat-text .section-title { color: var(--white); }
+    .sat-text .section-text { color: rgba(250,248,244,0.6); }
+    .sat-img-wrap {
+      position: relative;
+    }
+    .sat-img-wrap img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      display: block;
+    }
+    .sat-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(10,22,40,0.2), transparent);
+      pointer-events: none;
+    }
+    .annotation {
+      position: absolute;
+      background: rgba(10,22,40,0.85);
+      border: 1px solid rgba(212,168,67,0.4);
+      color: var(--sand-light);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.8rem;
+      white-space: nowrap;
+      backdrop-filter: blur(8px);
+    }
+    .annotation::before {
+      content: '';
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+    .ann-1 { top: 22%; left: 30%; }
+    .ann-1::before { top: 50%; left: -12px; transform: translateY(-50%); }
+    .ann-2 { top: 50%; left: 10%; }
+    .ann-2::before { top: 50%; right: -12px; transform: translateY(-50%); }
+    .ann-3 { bottom: 25%; left: 40%; }
+    .ann-3::before { top: -12px; left: 50%; transform: translateX(-50%); }
+    @media (max-width: 900px) {
+      .hist-grid { grid-template-columns: 1fr; }
+      .satellite-inner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">Abu<span>Dhabi</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="passato.html">Il Passato</a></li>
+      <li><a href="confronto.html">Confronto</a></li>
+      <li><a href="effetti.html">Effetti</a></li>
+      <li><a href="conclusione.html">Conclusione</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg" style="background-image: url('../images/satellite_1997.png');"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <p class="hero-eyebrow">Le origini della città</p>
+      <h1 class="hero-title">Abu Dhabi nel <em>Passato</em></h1>
+    </div>
+  </div>
+
+  <!-- HISTORY CARDS -->
+  <section class="section" style="background:var(--white); padding-top:5rem;">
+    <div style="text-align:center; max-width:700px; margin:0 auto 4rem;">
+      <span class="section-eyebrow">Cronologia storica</span>
+      <h2 class="section-title reveal">Dalla <em>sabbia</em> all'ambizione</h2>
+      <p class="section-text reveal" style="margin:0 auto; text-align:center;">
+        La storia di Abu Dhabi è un viaggio attraverso secoli di vita beduina, commercio marittimo e poi, improvvisamente, la scoperta che avrebbe cambiato tutto.
+      </p>
+    </div>
+
+    <div class="hist-grid">
+      <div class="hist-card reveal">
+        <div class="hist-decade">1700s</div>
+        <h3>Le Origini</h3>
+        <p>Abu Dhabi nasce come piccolo insediamento della tribù Bani Yas. La pesca, la caccia alle perle e l'allevamento erano le principali attività economiche dei pochi abitanti.</p>
+      </div>
+      <div class="hist-card reveal reveal-delay-1">
+        <div class="hist-decade">1820</div>
+        <h3>Accordo con la Gran Bretagna</h3>
+        <p>Il trattato del 1820 con la Gran Bretagna inizia a stabilizzare la regione. Abu Dhabi entra a far parte degli "Stati della Tregua", garantendo pace commerciale nel Golfo.</p>
+      </div>
+      <div class="hist-card reveal reveal-delay-2">
+        <div class="hist-decade">1940s</div>
+        <h3>Prima della Ricchezza</h3>
+        <p>La città contava appena 2.000 abitanti. Il declino dell'industria perlífera giapponese aveva impoverito la regione. Edifici in fango e palme da dattero erano la norma.</p>
+      </div>
+      <div class="hist-card reveal">
+        <div class="hist-decade">1958</div>
+        <h3>Scoperta del Petrolio</h3>
+        <p>La scoperta del petrolio offshore a Umm Shaif nel 1958 — e l'avvio delle esportazioni nel 1962 — trasforma radicalmente le prospettive dell'emirato, avviando un'era di sviluppo senza precedenti.</p>
+      </div>
+      <div class="hist-card reveal reveal-delay-1">
+        <div class="hist-decade">1971</div>
+        <h3>Fondazione degli EAU</h3>
+        <p>Abu Dhabi diventa uno dei sette emirati fondatori degli Emirati Arabi Uniti. Sheikh Zayed bin Sultan Al Nahyan, Presidente fondatore, avvia una visione ambiziosa per la città.</p>
+      </div>
+      <div class="hist-card reveal reveal-delay-2">
+        <div class="hist-decade">1990s</div>
+        <h3>La Città che Cresce</h3>
+        <p>Gli anni '90 vedono la prima grande espansione urbana documentata nelle immagini satellitari. Strade, quartieri residenziali e zone industriali iniziano a prendere forma nel deserto.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SATELLITE 1997 -->
+  <section class="satellite-full">
+    <div class="satellite-inner">
+      <div class="sat-text reveal">
+        <span class="section-eyebrow" style="color:var(--gold);">Immagine Satellitare · 1997</span>
+        <h2 class="section-title">La città<br><em>prima</em> del boom</h2>
+        <p class="section-text">
+          Questa immagine satellitare del 1997 mostra Abu Dhabi nei suoi anni di prima crescita accelerata. La struttura urbana è ancora relativamente compatta sull'isola principale, con vaste aree desertiche circostanti e pochissimo sviluppo nelle zone ora densamente abitate come Musaffah e Mohammed Bin Zayed City.
+        </p>
+        <div style="margin-top:2rem; padding:1.5rem; border-left:2px solid var(--gold); background:rgba(255,255,255,0.04);">
+          <p style="font-size:0.8rem; color:rgba(250,248,244,0.5); font-style:italic; line-height:1.7;">
+            "La trasformazione di Abu Dhabi è uno degli esempi più straordinari di sviluppo urbano programmato del XX e XXI secolo."
+          </p>
+          <p style="font-size:0.7rem; color:var(--gold); margin-top:0.8rem; letter-spacing:0.1em;">— Fonte: abudhabi.ae</p>
+        </div>
+        <a href="confronto.html" style="display:inline-block;margin-top:2.5rem;padding:0.9rem 2.5rem;border:1px solid var(--gold);color:var(--gold);text-decoration:none;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;transition:all 0.4s;">
+          Confronto 1997 ↔ 2026 →
+        </a>
+      </div>
+      <div class="sat-img-wrap reveal reveal-delay-2">
+        <img src="../images/satellite_1997.png" alt="Abu Dhabi 1997 — immagine satellitare">
+        <div class="sat-overlay"></div>
+        <div class="annotation ann-1">Centro urbano</div>
+        <div class="annotation ann-2">Isola principale</div>
+        <div class="annotation ann-3">Area desertica</div>
+        <div class="image-label">1997 · Immagine Satellitare</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Abu<span>Dhabi</span> Urban Story</div>
+    <ul class="footer-nav">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="passato.html">Passato</a></li>
+      <li><a href="confronto.html">Confronto</a></li>
+      <li><a href="effetti.html">Effetti</a></li>
+      <li><a href="conclusione.html">Conclusione</a></li>
+    </ul>
+    <div class="footer-credits">
+      Fonte: <a href="https://www.abudhabi.ae" target="_blank" style="color:var(--gold);text-decoration:none;">abudhabi.ae</a><br>
+      © 2026 Abu Dhabi Urban Story
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

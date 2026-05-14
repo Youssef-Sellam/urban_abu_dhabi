@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conclusione — Abu Dhabi Urban Story</title>
+  <link rel="icon" type="image/webp" href="../images/icona.webp">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .concl-main {
+      background: var(--deep);
+      padding: 7rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .concl-main-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('../images/satellite_2026.png');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.07;
+    }
+    .concl-main-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    .concl-main-inner .section-title {
+      color: var(--white);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+    }
+    .concl-main-inner .section-text {
+      color: rgba(250,248,244,0.6);
+      max-width: 100%;
+      text-align: center;
+      font-size: 0.95rem;
+      line-height: 2;
+    }
+
+    .quote-block {
+      max-width: 700px;
+      margin: 3rem auto;
+      padding: 2.5rem 3rem;
+      border: 1px solid rgba(212,168,67,0.25);
+      position: relative;
+    }
+    .quote-block::before {
+      content: '"';
+      position: absolute;
+      top: -1.5rem;
+      left: 2rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 6rem;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .quote-block p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(250,248,244,0.8);
+      line-height: 1.6;
+      text-align: center;
+    }
+    .quote-source {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 1rem;
+      display: block;
+    }
+
+    /* VISION 2030 */
+    .vision-section {
+      background: var(--sand-pale);
+      padding: 7rem 4rem;
+    }
+    .vision-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .vision-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+    .vision-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+    }
+    .vision-card {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: var(--white);
+      position: relative;
+      transition: all 0.4s;
+    }
+    .vision-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 3px;
+      background: var(--gold);
+      transition: width 0.5s ease;
+    }
+    .vision-card:hover::after { width: 100%; }
+    .vision-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+    .vision-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      font-weight: 300;
+      color: var(--sand);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .vision-card h3 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .vision-card p {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* FINAL IMAGE */
+    .final-image-section {
+      position: relative;
+      height: 70vh;
+      min-height: 500px;
+      overflow: hidden;
+    }
+    .final-image-section img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .final-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,22,40,0.95) 0%, rgba(10,22,40,0.3) 60%, transparent 100%);
+    }
+    .final-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 4rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .final-content p {
+      font-size: 1.1rem;
+      color: rgba(250,248,244,0.75);
+      font-weight: 300;
+      line-height: 1.8;
+      max-width: 700px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      background: var(--deep);
+      padding: 5rem 4rem;
+      text-align: center;
+      border-top: 1px solid rgba(212,168,67,0.2);
+    }
+    .cta-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+    .cta-links {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .cta-btn {
+      padding: 0.9rem 2.5rem;
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: all 0.4s;
+      font-weight: 400;
+    }
+    .cta-btn.primary {
+      background: var(--gold);
+      color: var(--deep);
+    }
+    .cta-btn.primary:hover {
+      background: var(--gold-bright);
+    }
+    .cta-btn.secondary {
+      border: 1px solid rgba(212,168,67,0.4);
+      color: var(--gold);
+    }
+    .cta-btn.secondary:hover {
+      background: var(--gold);
+      color: var(--deep);
+    }
+
+    @media (max-width: 900px) {
+      .vision-grid { grid-template-columns: 1fr; }
+      .quote-block { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">Abu<span>Dhabi</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="passato.html">Il Passato</a></li>
+      <li><a href="confronto.html">Confronto</a></li>
+      <li><a href="effetti.html">Effetti</a></li>
+      <li><a href="conclusione.html">Conclusione</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero" style="background: linear-gradient(135deg, #0A1628, #0D2540);">
+    <div class="page-hero-bg" style="background-image:url('../images/satellite_2026.png'); opacity:0.25;"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <p class="hero-eyebrow">Riflessioni finali</p>
+      <h1 class="hero-title">Il <em>Futuro</em> di Abu Dhabi</h1>
+    </div>
+  </div>
+
+  <!-- MAIN CONCLUSION -->
+  <section class="concl-main">
+    <div class="concl-main-bg"></div>
+    <div class="concl-main-inner">
+      <span class="section-eyebrow" style="color:var(--gold);">Una storia ancora in corso</span>
+      <h2 class="section-title reveal">La trasformazione<br><em>continua</em></h2>
+      <div class="gold-line reveal"></div>
+      <p class="section-text reveal">
+        In meno di settant'anni, Abu Dhabi ha compiuto un percorso che altre città hanno impiegato secoli a realizzare. Da insediamento di pochi pescatori a metropoli globale con grattacieli, musei internazionali, università di eccellenza e una delle economie più dinamiche del mondo. Questa trasformazione è stata guidata da una visione chiara, dalla ricchezza petrolifera reinvestita strategicamente e da una leadership lungimirante.
+      </p>
+
+      <div class="quote-block reveal">
+        <p>
+          "La nostra vera ricchezza non è il petrolio, ma gli esseri umani. Costruiremo una nazione che durerà per sempre."
+        </p>
+        <span class="quote-source">— Sheikh Zayed bin Sultan Al Nahyan, Padre Fondatore degli EAU</span>
+      </div>
+
+      <p class="section-text reveal" style="margin-top:2rem;">
+        Oggi la sfida più grande non è più costruire, ma costruire bene. Il Piano Abu Dhabi 2030, disponibile su <a href="https://www.abudhabi.ae" target="_blank" style="color:var(--gold-bright);text-decoration:none;">abudhabi.ae</a>, delinea una visione in cui la crescita economica, la diversificazione post-petrolio, la sostenibilità ambientale e il benessere sociale camminano insieme. La domanda non è se Abu Dhabi crescerà ancora — ma come lo farà in modo responsabile per le generazioni future.
+      </p>
+    </div>
+  </section>
+
+  <!-- VISION 2030 -->
+  <section class="vision-section">
+    <div class="vision-inner">
+      <div class="vision-header reveal">
+        <span class="section-eyebrow">Obiettivi Strategici</span>
+        <h2 class="section-title">Piano Abu Dhabi <em>2030</em></h2>
+        <p style="font-size:0.88rem; color:var(--text-light); max-width:550px; margin:1rem auto 0; text-align:center; line-height:1.7; font-weight:300;">
+          Tre pilastri per un futuro sostenibile, come indicato dall'Agenda Economica di Abu Dhabi sul portale ufficiale.
+        </p>
+      </div>
+      <div class="vision-grid">
+        <div class="vision-card reveal">
+          <div class="vision-number">44%</div>
+          <h3>Energia Rinnovabile</h3>
+          <p>Obiettivo di portare le fonti rinnovabili al 44% del mix energetico entro il 2030, con massicci investimenti nel solare e nelle batterie di accumulo.</p>
+        </div>
+        <div class="vision-card reveal reveal-delay-1">
+          <div class="vision-number">50%</div>
+          <h3>Diversificazione PIL</h3>
+          <p>Ridurre la dipendenza dal petrolio portando i settori non-oil a rappresentare il 50% del PIL entro il 2030 attraverso turismo, finanza e tecnologia.</p>
+        </div>
+        <div class="vision-card reveal reveal-delay-2">
+          <div class="vision-number">2°C</div>
+          <h3>Impegno Climatico</h3>
+          <p>Abu Dhabi ha firmato gli Accordi di Parigi e ospitato la COP28 nel 2023, impegnandosi a contenere l'aumento della temperatura globale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL IMAGE -->
+  <div class="final-image-section">
+    <img src="../images/satellite_2026.png" alt="Abu Dhabi 2026 — Vista Satellitare">
+    <div class="final-overlay"></div>
+    <div class="final-content">
+      <p>
+        "Abu Dhabi nel 2026 — una città che guarda al futuro dal deserto, con i piedi nell'acqua del Golfo e lo sguardo verso le stelle. La trasformazione è visibile dall'alto, ma si sente nel cuore di chi la vive."
+      </p>
+    </div>
+  </div>
+
+  <!-- CTA SECTION -->
+  <section class="cta-section">
+    <h2>Esplora l'intera <em>storia</em></h2>
+    <div class="cta-links">
+      <a href="passato.html" class="cta-btn secondary">← Il Passato</a>
+      <a href="confronto.html" class="cta-btn primary">Confronto Satellitare</a>
+      <a href="effetti.html" class="cta-btn secondary">Gli Effetti →</a>
+    </div>
+    <p style="font-size:0.78rem; color:rgba(250,248,244,0.35); letter-spacing:0.05em;">
+      Fonte ufficiale: 
+      <a href="https://www.abudhabi.ae" target="_blank" style="color:var(--gold);text-decoration:none;letter-spacing:0.05em;">www.abudhabi.ae</a>
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Abu<span>Dhabi</span> Urban Story</div>
+    <ul class="footer-nav">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="passato.html">Passato</a></li>
+      <li><a href="confronto.html">Confronto</a></li>
+      <li><a href="effetti.html">Effetti</a></li>
+      <li><a href="conclusione.html">Conclusione</a></li>
+    </ul>
+    <div class="footer-credits">
+      Fonte: <a href="https://www.abudhabi.ae" target="_blank" style="color:var(--gold);text-decoration:none;">abudhabi.ae</a><br>
+      © 2026 Abu Dhabi Urban Story
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

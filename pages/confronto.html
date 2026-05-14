@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confronto Satellitare — Abu Dhabi Urban Story</title>
+  <link rel="icon" type="image/webp" href="../images/icona.webp">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .confronto-intro {
+      background: var(--deep);
+      padding: 6rem 4rem;
+    }
+    .confronto-intro-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .confronto-intro .section-title { color: var(--white); }
+    .confronto-intro .section-text { color: rgba(250,248,244,0.6); }
+
+    /* SLIDER FULL */
+    .slider-full-section {
+      background: #080F1C;
+      padding: 5rem 4rem;
+    }
+    .slider-full-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .slider-full-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .slider-full-header h2 { color: var(--white); }
+    .slider-instruction {
+      color: rgba(250,248,244,0.45);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      margin-top: 0.5rem;
+    }
+    .slider-wrapper-large {
+      position: relative;
+      width: 100%;
+      height: 680px;
+      overflow: hidden;
+      cursor: col-resize;
+      user-select: none;
+    }
+    .slider-wrapper-large .slider-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .slider-wrapper-large .slider-img.new {
+      clip-path: inset(0 50% 0 0);
+    }
+    .slider-wrapper-large .slider-divider {
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 50%;
+      width: 3px;
+      background: var(--gold);
+      cursor: col-resize;
+      z-index: 10;
+      transform: translateX(-50%);
+    }
+    .slider-wrapper-large .slider-handle {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px; height: 60px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.6);
+      transition: transform 0.2s;
+    }
+    .slider-wrapper-large .slider-handle:hover {
+      transform: translate(-50%, -50%) scale(1.12);
+    }
+
+    /* SIDE BY SIDE */
+    .sidebyside-section {
+      background: var(--white);
+      padding: 6rem 4rem;
+    }
+    .sidebyside-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .sidebyside-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .sidebyside-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+    }
+    .side-img-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+    .side-img-wrap img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .side-img-wrap:hover img {
+      transform: scale(1.04);
+    }
+    .side-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,22,40,0.8) 0%, transparent 50%);
+    }
+    .side-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem;
+    }
+    .side-year {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .side-desc {
+      font-size: 0.78rem;
+      color: rgba(250,248,244,0.7);
+      letter-spacing: 0.05em;
+      font-weight: 300;
+    }
+
+    /* CHANGE METRICS */
+    .metrics-section {
+      background: var(--sand-pale);
+      padding: 6rem 4rem;
+    }
+    .metrics-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .metrics-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .metric-card {
+      background: var(--white);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      border-bottom: 3px solid transparent;
+      transition: all 0.4s;
+    }
+    .metric-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+      border-bottom-color: var(--teal);
+    }
+    .metric-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .metric-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .metric-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text);
+      margin-bottom: 0.8rem;
+    }
+    .metric-desc {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+    .change-bar-wrap {
+      margin-top: 1rem;
+      height: 4px;
+      background: var(--sand-light);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .change-bar {
+      height: 100%;
+      background: linear-gradient(to right, var(--teal), var(--teal-light));
+      border-radius: 2px;
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform 1.2s ease;
+    }
+    .change-bar.animated { transform: scaleX(1); }
+
+    @media (max-width: 900px) {
+      .confronto-intro-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .sidebyside-grid { grid-template-columns: 1fr; }
+      .metrics-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">Abu<span>Dhabi</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="passato.html">Il Passato</a></li>
+      <li><a href="confronto.html">Confronto</a></li>
+      <li><a href="effetti.html">Effetti</a></li>
+      <li><a href="conclusione.html">Conclusione</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero" style="background: linear-gradient(135deg, #0A1628, #1B7A8A);">
+    <div class="page-hero-bg" style="background-image:url('../images/satellite_2026.png');"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <p class="hero-eyebrow">Immagini Satellitari Comparative</p>
+      <h1 class="hero-title">1997 ↔ <em>2026</em></h1>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <section class="confronto-intro">
+    <div class="confronto-intro-inner">
+      <div class="reveal">
+        <span class="section-eyebrow" style="color:var(--gold);">Crescita Urbana</span>
+        <h2 class="section-title">Tre decenni di<br><em>trasformazione</em></h2>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <p class="section-text" style="margin-bottom:1.5rem;">
+          Confrontando le immagini satellitari del 1997 con quelle del 2026, emerge una trasformazione urbana senza precedenti. Abu Dhabi ha espanso il suo territorio edificato di oltre 6 volte, creato isole artificiali, collegato isolotti e trasformato il deserto in quartieri moderni.
+        </p>
+        <p class="section-text">
+          I dati del Dipartimento di Urbanistica di Abu Dhabi — disponibili su <a href="https://www.abudhabi.ae" target="_blank" style="color:var(--gold);text-decoration:none;">abudhabi.ae</a> — mostrano una pianificazione urbanistica che ha anticipato la crescita demografica con infrastrutture all'avanguardia.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LARGE SLIDER -->
+  <section class="slider-full-section">
+    <div class="slider-full-inner">
+      <div class="slider-full-header reveal">
+        <span class="section-eyebrow" style="color:var(--gold);">Trascina il cursore</span>
+        <h2 style="font-family:'Cormorant Garamond',serif; font-size:2.5rem; font-weight:300; color:var(--white);">
+          Confronto Interattivo
+        </h2>
+        <p class="slider-instruction">← Trascina il cursore per rivelare il cambiamento →</p>
+      </div>
+      <div class="slider-wrapper-large reveal">
+        <img class="slider-img old" src="../images/satellite_1997.png" alt="Abu Dhabi 1997">
+        <img class="slider-img new" src="../images/satellite_2026.png" alt="Abu Dhabi 2026">
+        <div class="slider-divider">
+          <div class="slider-handle">
+            <svg width="22" height="22" fill="none" stroke="#0A1628" stroke-width="2.5" viewBox="0 0 24 24">
+              <path d="M9 18l-6-6 6-6M15 6l6 6-6 6"/>
+            </svg>
+          </div>
+        </div>
+        <div class="slider-label-left">1997</div>
+        <div class="slider-label-right">2026</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIDE BY SIDE -->
+  <section class="sidebyside-section">
+    <div class="sidebyside-inner">
+      <div class="sidebyside-header reveal">
+        <span class="section-eyebrow">Confronto diretto</span>
+        <h2 class="section-title">Le due <em>città</em></h2>
+        <p style="font-size:0.85rem; color:var(--text-light); max-width:500px; margin:0.8rem auto 0; line-height:1.7; font-weight:300;">
+          Abu Dhabi nel 1997 e Abu Dhabi oggi — la stessa zona geografica, un mondo completamente diverso.
+        </p>
+      </div>
+      <div class="sidebyside-grid reveal">
+        <div class="side-img-wrap">
+          <img src="../images/satellite_1997.png" alt="Abu Dhabi 1997">
+          <div class="side-overlay"></div>
+          <div class="side-caption">
+            <div class="side-year">1997</div>
+            <div class="side-desc">Crescita urbana ancora limitata · Vaste aree desertiche</div>
+          </div>
+        </div>
+        <div class="side-img-wrap">
+          <img src="../images/satellite_2026.png" alt="Abu Dhabi 2026">
+          <div class="side-overlay"></div>
+          <div class="side-caption">
+            <div class="side-year">2026</div>
+            <div class="side-desc">Metropoli densamente costruita · Isole artificiali · Hub industriale</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS -->
+  <section class="metrics-section">
+    <div class="metrics-inner">
+      <div class="metrics-header reveal">
+        <span class="section-eyebrow">I Numeri del Cambiamento</span>
+        <h2 class="section-title">Crescita in <em>cifre</em></h2>
+      </div>
+      <div class="metrics-grid">
+        <div class="metric-card reveal">
+          <div class="metric-icon">🏙️</div>
+          <div class="metric-value">+600%</div>
+          <div class="metric-label">Superficie Urbana</div>
+          <div class="metric-desc">L'area edificata è cresciuta di oltre 6 volte rispetto al 1997.</div>
+          <div class="change-bar-wrap"><div class="change-bar" style="width:95%"></div></div>
+        </div>
+        <div class="metric-card reveal reveal-delay-1">
+          <div class="metric-icon">👥</div>
+          <div class="metric-value">×10</div>
+          <div class="metric-label">Popolazione</div>
+          <div class="metric-desc">Da circa 450.000 abitanti nel 1997 ai 4,7 milioni di oggi.</div>
+          <div class="change-bar-wrap"><div class="change-bar" style="width:85%"></div></div>
+        </div>
+        <div class="metric-card reveal reveal-delay-2">
+          <div class="metric-icon">🛣️</div>
+          <div class="metric-value">+4000 km</div>
+          <div class="metric-label">Rete Stradale</div>
+          <div class="metric-desc">Migliaia di km di strade, autostrade e arterie urban costruite ex novo.</div>
+          <div class="change-bar-wrap"><div class="change-bar" style="width:78%"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Abu<span>Dhabi</span> Urban Story</div>
+    <ul class="footer-nav">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="passato.html">Passato</a></li>
+      <li><a href="confronto.html">Confronto</a></li>
+      <li><a href="effetti.html">Effetti</a></li>
+      <li><a href="conclusione.html">Conclusione</a></li>
+    </ul>
+    <div class="footer-credits">
+      Fonte: <a href="https://www.abudhabi.ae" target="_blank" style="color:var(--gold);text-decoration:none;">abudhabi.ae</a><br>
+      © 2026 Abu Dhabi Urban Story
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    // Animate bars on scroll
+    const bars = document.querySelectorAll('.change-bar');
+    const barObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('animated'); });
+    }, { threshold: 0.5 });
+    bars.forEach(b => barObserver.observe(b));
+
+    // Override slider for large wrapper
+    const wrapper = document.querySelector('.slider-wrapper-large');
+    if (wrapper) {
+      const divider = wrapper.querySelector('.slider-divider');
+      const newImg = wrapper.querySelector('.slider-img.new');
+      let isDragging = false;
+      function setPos(x) {
+        const rect = wrapper.getBoundingClientRect();
+        let pct = ((x - rect.left) / rect.width) * 100;
+        pct = Math.max(2, Math.min(98, pct));
+        divider.style.left = pct + '%';
+        newImg.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+      }
+      wrapper.addEventListener('mousedown', e => { isDragging = true; setPos(e.clientX); });
+      window.addEventListener('mousemove', e => { if (isDragging) setPos(e.clientX); });
+      window.addEventListener('mouseup', () => isDragging = false);
+      wrapper.addEventListener('touchstart', e => { isDragging = true; setPos(e.touches[0].clientX); }, {passive:true});
+      window.addEventListener('touchmove', e => { if (isDragging) setPos(e.touches[0].clientX); }, {passive:true});
+      window.addEventListener('touchend', () => isDragging = false);
+    }
+  </script>
+</body>
+</html>
